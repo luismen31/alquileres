@@ -14,14 +14,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/', function () {
 		return view('welcome');
 	});
-
 	Route::get('auth/logout', 'Auth\AuthController@getLogout');
-	Route::post('profesionales/editProfesional', 'ProfesionalesController@editProfesional');
-	Route::resource('profesionales', 'ProfesionalesController');
-
-	Route::post('pacientes/editPaciente', 'PacientesController@editPaciente');
-	Route::resource('pacientes', 'PacientesController');
-	Route::controller('buscar', 'SearchController');
+	Route::resource('empresas', 'EmpresasController');
+	Route::resource('usuarios', 'UserController');
 });
 
 // Authentication routes...

@@ -38,7 +38,7 @@
 					<i class="fa fa-bars"></i>
 					<span class="sr-only">Menu</span>
 				  </button>		          
-		          <a href="{{ url('/') }}" class="navbar-brand navbar-brand-centered">Gestión de Cuidados Paliativos Panamá</a>   
+		          <a href="{{ url('/') }}" class="navbar-brand navbar-brand-centered">Gestión de Bienes Alquilables</a>   
 		        </div>		        
 		      </div>
 		    </nav>
@@ -52,17 +52,17 @@
 			        <div class="col-xs-6 col-sm-3 col-md-2 sidebar-offcanvas sidebar side-menu" id="sidebar">
 		        		<div class="side-menu-container">
 							<ul class="nav navbar-nav">
-								<li class="panel panel-default {{ ($url == 'profesionales' or $url == 'pacientes') ? 'active' : '' }}" id="dropdown">
+								<li class="panel panel-default {{ ($url == 'empresas' or $url == 'usuarios') ? 'active' : '' }}" id="dropdown">
 									<a data-toggle="collapse" href="#drop_1">
 										<span class="fa fa-users"></span> Administración <span class="caret"></span>
 									</a>
 
 									<!-- Dropdown level 1 -->
-									<div id="drop_1" class="panel-collapse collapse {{ ($url == 'profesionales' or $url == 'pacientes') ? 'in' : '' }}">
+									<div id="drop_1" class="panel-collapse collapse {{ ($url == 'empresas' or $url == 'usuarios') ? 'in' : '' }}">
 										<div class="panel-body">
 											<ul class="nav navbar-nav">
-												<li><a href="{{route('profesionales.index')}}"><span class="fa fa-user"></span> Profesionales</a></li>
-												<li><a href="{{ route('pacientes.index') }}"><span class="fa fa-user"></span> Pacientes</a></li>
+												<li><a href="{{route('empresas.index')}}"><span class="fa fa-user"></span> Empresas</a></li>
+												<li><a href="{{route('usuarios.index')}}"><span class="fa fa-user"></span> Usuarios</a></li>
 												<li><a href="#">Link</a></li>												
 											</ul>
 										</div>
