@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="" type="image/x-icon">    
-    <title>@yield('title', 'Iniciar Cuidados Paliativos')</title>
+    <title>@yield('title', 'Iniciar Gestión de Bienes Alquilabless')</title>
    
     <!-- Bootstrap core CSS -->
     {!! Html::style('assets/css/bootstrap.css') !!}
@@ -32,7 +32,7 @@
 	            <div class="well login-box">
 	        	<div class="row">
 	        		
-	        			@include('mensajes.errors')
+	        		@include('mensajes.errors')
 	        		
 	        	</div>
 	            	{!! Form::open(['url' => 'auth/login', 'method' => 'POST', 'role' => 'form']) !!}

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="" type="image/x-icon">    
-    <title>@yield('title', 'Alquileres')</title>
+    <title>@yield('title', 'Gestión de Bienes Alquilables')</title>
    
     <!-- Bootstrap core CSS -->
      {!! Html::style('assets/css/bootstrap.css') !!}
@@ -31,7 +31,7 @@
   	<div id="wrap">
         <div id="main" class="clearf">
         	<div id="noty-holder"></div><!-- HERE IS WHERE THE NOTY WILL APPEAR-->
-        	<nav class="navbar navbar-default navbar-fixed-top paliative-nav">
+        	<nav class="navbar navbar-default navbar-fixed-top alquiler-nav">
 		      <div class="container-fluid border-nav">
 		        <div class="navbar-header">
 		          <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed" data-toggle="offcanvas">
