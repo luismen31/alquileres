@@ -9,6 +9,18 @@
 				{!! Form::text('no_identificacion', null, array('class'=>'form-control input-sm', 'placeholder' => 'N° Identificación')) !!}
 			</div>
 			<div class="form-group col-sm-4">
+				{!! Form::label('tamaño', 'Tamaño (m2):', array('class' => 'control-label')) !!}
+				{!! Form::text('tamaño', null, array('class'=>'form-control input-sm', 'placeholder' => 'Tamaño')) !!}
+			</div>
+			<div class="form-group col-sm-4">
+				{!! Form::label('baños', 'Baños:', array('class' => 'control-label')) !!}
+				{!! Form::number('baños', null, array('class'=>'form-control input-sm', 'placeholder' => '0')) !!}
+			</div>
+			<div class="form-group col-sm-4">
+				{!! Form::label('aire', 'Aire Acondicionado:', array('class' => 'control-label')) !!}
+				{!! Form::select('aire', Array('1' => 'SI', '2' => 'NO'), null, array('class' => 'form-control input-sm'))  !!}
+			</div>
+			<div class="form-group col-sm-4">
 				{!! Form::label('precio_alquiler', 'Precio de Alquiler:', array('class' => 'control-label')) !!}
 				{!! Form::text('precio_alquiler', null, array('class'=>'form-control input-sm', 'placeholder' => 'Precio de Alquiler')) !!}
 			</div>

@@ -1,12 +1,12 @@
 @extends('app')
 
 @section('title')
-	Editar Servicios
+	Editar Servicio - Local
 @stop
 
 @section('content')	
 	
-	<h2 class="page-header">Servicios</h2>
+	<h2 class="page-header">Servicios - Locales</h2>
 
 	{{-- Mostrar mensaje exitoso --}}
 	@if(Session::has('mensaje'))
@@ -17,9 +17,9 @@
 		
 		@include('mensajes.errors')
 						
-		{!! Form::model($datos, array('route' => array('servicios.update', $datos->id), 'method' => 'PUT')) !!}
+		{!! Form::model($datos, array('route' => array('serviciolocal.update', $datos->id), 'method' => 'PUT')) !!}
 
-			@include('servicios.partials.forms')
+			@include('servicioslocales.partials.forms')
 
 			<div class="row">
 				<div class="form-group col-sm-12">

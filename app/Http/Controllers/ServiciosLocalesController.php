@@ -16,7 +16,7 @@ class ServiciosLocalesController extends Controller
      */
     public function index()
     {
-        //
+        return view('servicioslocales.create');
     }
 
     /**
@@ -37,7 +37,16 @@ class ServiciosLocalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ServicioLocal = new \App\ServicioLocal;
+        $ServicioLocal->id_local = $request->input('id_local');
+        $ServicioLocal->id_servicio = $request->input('id_servicio');
+        $ServicioLocal->costo = $request->input('costo');
+        $ServicioLocal->fecha = $request->input('fecha');
+        $ServicioLocal->realizado_por = $request->input('realizado_por');
+        $ServicioLocal->observaciones = $request->input('observaciones');
+        $ServicioLocal->save();
+
+        return redirect()->route('serviciolocal.index');
     }
 
     /**
@@ -59,7 +68,9 @@ class ServiciosLocalesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ServicioLocal = \App\ServicioLocal::find($id);
+
+        return view('servicioslocales.edit')->with('datos', $ServicioLocal);
     }
 
     /**
@@ -71,7 +82,17 @@ class ServiciosLocalesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ServicioLocal = \App\ServicioLocal::find($id);
+
+        $ServicioLocal->id_local = $request->input('id_local');
+        $ServicioLocal->id_servicio = $request->input('id_servicio');
+        $ServicioLocal->costo = $request->input('costo');
+        $ServicioLocal->fecha = $request->input('fecha');
+        $ServicioLocal->realizado_por = $request->input('realizado_por');
+        $ServicioLocal->observaciones = $request->input('observaciones');
+        $ServicioLocal->save();
+
+        return redirect()->route('serviciolocal.index');
     }
 
     /**

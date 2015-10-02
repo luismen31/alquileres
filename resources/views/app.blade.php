@@ -61,7 +61,9 @@
 									<div id="drop_1" class="panel-collapse collapse {{ ($url == 'empresas' or $url == 'usuarios' or $url == 'servicios' or $url == 'locales') ? 'in' : '' }}">
 										<div class="panel-body">
 											<ul class="nav navbar-nav">
-												<li><a href="{{route('empresas.index')}}"><span class="fa fa-user"></span> Empresas</a></li>
+												{{--@if(\App\UserEmpresa::('id_user', \Auth::user()->id)->first()->id_empresa == '1')--}}
+													<li><a href="{{route('empresas.index')}}"><span class="fa fa-user"></span> Empresas</a></li>
+												{{--@endif--}}
 												<li><a href="{{route('usuarios.index')}}"><span class="fa fa-user"></span> Usuarios</a></li>
 												<li><a href="{{route('servicios.index')}}"><span class="fa fa-user"></span> Servicios</a></li>
 												<li><a href="{{route('locales.index')}}"><span class="fa fa-user"></span> Locales</a></li>
@@ -80,8 +82,8 @@
 									<div id="drop_2" class="panel-collapse collapse">
 										<div class="panel-body">
 											<ul class="nav navbar-nav">
-												<li><a href="#">Asignar Servicio - Local</a></li>
-												<li><a href="#">Consultar Local</a></li>
+												<li><a href="{{route('serviciolocal.index')}}">Asignar Servicio - Local</a></li>
+												<li><a href="">Consultar Local</a></li>
 												<!-- Dropdown level 2 -->
 												<li class="panel panel-default" id="dropdown">
 													<a data-toggle="collapse" href="#drop_2-1">
@@ -114,7 +116,7 @@
 						<div class="row sub-nav">
 							<div class="col-md-6 col-sm-8 pull-left">
 								<ul class="list-inline">
-									<li class="welcome">Bienvenido, {{-- Auth::user() --}}</li>
+									<li class="welcome">Bienvenido, {{ Auth::user()->usuario }}</li>
 								</ul>								
 							</div>
 							<div class="col-md-6 col-sm-4">

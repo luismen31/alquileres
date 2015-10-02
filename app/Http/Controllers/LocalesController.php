@@ -40,6 +40,9 @@ class LocalesController extends Controller
         $Locales = new \App\Local;
         $Locales->no_identificacion = $request->input('no_identificacion');
         $Locales->ubicacion = $request->input('ubicacion');
+        $Locales->tamaño = $request->input('tamaño');
+        $Locales->baños = $request->input('baños');
+        $Locales->aire = $request->input('aire');
         $Locales->precio_alquiler = $request->input('precio_alquiler');
         $Locales->id_empresa = $request->input('id_empresa');
         $Locales->save();
@@ -82,6 +85,9 @@ class LocalesController extends Controller
     {
         $Locales = \App\Local::find($id);        
         $Locales->no_identificacion = $request->input('no_identificacion');
+        $Locales->tamaño = $request->input('tamaño');
+        $Locales->baños = $request->input('baños');
+        $Locales->aire = $request->input('aire');
         $Locales->ubicacion = $request->input('ubicacion');
         $Locales->precio_alquiler = $request->input('precio_alquiler');
         $Locales->id_empresa = $request->input('id_empresa');

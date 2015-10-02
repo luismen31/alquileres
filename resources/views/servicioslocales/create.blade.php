@@ -1,12 +1,12 @@
 @extends('app')
 
 @section('title')
-	Agregar Nuevo Servicio
+	Agregar Nuevo Servicio - Local
 @stop
 
 @section('content')	
 	
-	<h2 class="page-header">Servicios</h2>
+	<h2 class="page-header">Servicios - Locales</h2>
 
 	{{-- Mostrar mensaje exitoso --}}
 	@if(Session::has('mensaje'))
@@ -17,9 +17,9 @@
 		
 		@include('mensajes.errors')
 						
-		{!! Form::open(array('route' => 'servicios.store', 'method' => 'POST')) !!}
+		{!! Form::open(array('route' => 'serviciolocal.store', 'method' => 'POST')) !!}
 
-			@include('servicios.partials.forms')
+			@include('servicioslocales.partials.forms')
 
 			<div class="row">
 				<div class="form-group col-sm-12">
