@@ -61,10 +61,10 @@
 									<div id="drop_1" class="panel-collapse collapse {{ ($url == 'empresas' or $url == 'usuarios' or $url == 'servicios' or $url == 'locales') ? 'in' : '' }}">
 										<div class="panel-body">
 											<ul class="nav navbar-nav">
-												<li><a href="{{route('empresas.index')}}"><span class="fa fa-user"></span> Empresas</a></li>
+												<li><a href="{{route('empresas.index')}}"><span class="fa fa-building"></span> Empresas</a></li>
 												<li><a href="{{route('usuarios.index')}}"><span class="fa fa-user"></span> Usuarios</a></li>
-												<li><a href="{{route('servicios.index')}}"><span class="fa fa-user"></span> Servicios</a></li>
-												<li><a href="{{route('locales.index')}}"><span class="fa fa-user"></span> Locales</a></li>
+												<li><a href="{{route('servicios.index')}}"><span class="fa fa-briefcase"></span> Servicios</a></li>
+												<li><a href="{{route('locales.index')}}"><span class="fa fa-building-o"></span> Locales</a></li>
 											</ul>
 										</div>
 									</div>
