@@ -1,12 +1,12 @@
 @extends('app')
 
 @section('title')
-	Agregar Nueva Empresa
+	Editar Usuario
 @stop
 
 @section('content')	
 	
-	<h2 class="page-header">Empresas</h2>
+	<h2 class="page-header">Usuarios</h2>
 
 	{{-- Mostrar mensaje exitoso --}}
 	@if(Session::has('mensaje'))
@@ -17,9 +17,9 @@
 		
 		@include('mensajes.errors')
 						
-		{!! Form::model($datos, array('route' => array('empresas.update', $datos->id), 'method' => 'PUT')) !!}
+		{!! Form::model($datos, array('route' => array('usuarios.update', $datos->id), 'method' => 'PUT')) !!}
 
-			@include('empresas.partials.forms')
+			@include('usuarios.partials.forms')
 
 			<div class="row">
 				<div class="form-group col-sm-12">

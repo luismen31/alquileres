@@ -17,6 +17,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('auth/logout', 'Auth\AuthController@getLogout');
 	Route::resource('empresas', 'EmpresasController');
 	Route::resource('usuarios', 'UserController');
+	Route::resource('servicios', 'ServiciosController');
+	Route::resource('locales', 'LocalesController');
+	Route::resource('serviciolocal', 'ServiciosLocalesController');
 });
 
 // Authentication routes...

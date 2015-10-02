@@ -14,11 +14,11 @@
 			</div>
 			<div class="form-group col-sm-4">
 				{!! Form::label('ubicacion', 'Ubicación:', array('class' => 'control-label')) !!}
-				{!! Form::textarea('ubicacion', null, array('placeholder' => 'Ubicación', 'class' => 'form-control input-sm', 'size' => '3x3')) !!}
+				{!! Form::textarea('ubicacion', null, array('placeholder' => 'Ubicación', 'class' => 'form-control input-sm', 'size' => '3x1')) !!}
 			</div>
 			<div class="form-group col-sm-4">
 				{!! Form::label('detalle', 'Detalle:', array('class' => 'control-label')) !!}
-				{!! Form::textarea('detalle', null, array('placeholder' => 'Detalle', 'class' => 'form-control input-sm', 'size' => '3x3')) !!}
+				{!! Form::textarea('detalle', null, array('placeholder' => 'Detalle', 'class' => 'form-control input-sm', 'size' => '3x1')) !!}
 			</div>
       	</div>
     </div>

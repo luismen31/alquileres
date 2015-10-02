@@ -39,7 +39,7 @@ class UserController extends Controller
     {
         $Usuario = new \App\Usuario;
         $Usuario->usuario = $request->input('usuario');
-        $Usuario->password = \Hash::make('password');
+        $Usuario->password = \Hash::make($request->input('password'));
         $Usuario->save();
 
         $id_usuario = \App\Usuario::where('id', '>', '0')->orderBy('id', 'desc')->first()->id;
@@ -72,7 +72,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Usuario = \App\Usuario::find($id);
+        $Usuario->id_empresa = \App\UserEmpresa::where('id_user', $id)->first()->id_empresa;
+        $Usuario->id_rol = \App\UserEmpresa::where('id_user', $id)->first()->id_rol;
+
+        return view('usuarios.edit')->with('datos', $Usuario);
     }
 
     /**
@@ -84,7 +88,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Usuario = \App\Usuario::find($id);
+        $Usuario->usuario = $request->input('usuario');
+        if(!empty($request->input('password'))){
+            $Usuario->password = \Hash::make($request->input('password'));
+        }
+        $Usuario->save();
+
+        $idUserEmpresa = \App\UserEmpresa::where('id_user', $id)->first()->id;
+
+        $UserEmpresa = \App\UserEmpresa::find($idUserEmpresa);
+        $UserEmpresa->id_empresa = $request->input('id_empresa');
+        $UserEmpresa->id_rol = $request->input('id_rol');
+        $UserEmpresa->save();
+
+        return redirect()->route('usuarios.index');
     }
 
     /**

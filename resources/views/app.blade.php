@@ -52,39 +52,36 @@
 			        <div class="col-xs-6 col-sm-3 col-md-2 sidebar-offcanvas sidebar side-menu" id="sidebar">
 		        		<div class="side-menu-container">
 							<ul class="nav navbar-nav">
-								<li class="panel panel-default {{ ($url == 'empresas' or $url == 'usuarios') ? 'active' : '' }}" id="dropdown">
+								<li class="panel panel-default {{ ($url == 'empresas' or $url == 'usuarios' or $url == 'servicios' or $url == 'locales') ? 'active' : '' }}" id="dropdown">
 									<a data-toggle="collapse" href="#drop_1">
 										<span class="fa fa-users"></span> Administración <span class="caret"></span>
 									</a>
 
 									<!-- Dropdown level 1 -->
-									<div id="drop_1" class="panel-collapse collapse {{ ($url == 'empresas' or $url == 'usuarios') ? 'in' : '' }}">
+									<div id="drop_1" class="panel-collapse collapse {{ ($url == 'empresas' or $url == 'usuarios' or $url == 'servicios' or $url == 'locales') ? 'in' : '' }}">
 										<div class="panel-body">
 											<ul class="nav navbar-nav">
 												<li><a href="{{route('empresas.index')}}"><span class="fa fa-user"></span> Empresas</a></li>
 												<li><a href="{{route('usuarios.index')}}"><span class="fa fa-user"></span> Usuarios</a></li>
-												<li><a href="#">Link</a></li>												
+												<li><a href="{{route('servicios.index')}}"><span class="fa fa-user"></span> Servicios</a></li>
+												<li><a href="{{route('locales.index')}}"><span class="fa fa-user"></span> Locales</a></li>
 											</ul>
 										</div>
 									</div>
 								</li>
 
-								<li><a href="#"><span class="fa fa-link"></span> Link</a></li>
-
 								<!-- Dropdown-->
 								<li class="panel panel-default" id="dropdown">
 									<a data-toggle="collapse" href="#drop_2">
-										<span class="fa fa-user"></span> Sub Level <span class="caret"></span>
+										<span class="fa fa-user"></span> Servicios - Locales <span class="caret"></span>
 									</a>
 
 									<!-- Dropdown level 1 -->
 									<div id="drop_2" class="panel-collapse collapse">
 										<div class="panel-body">
 											<ul class="nav navbar-nav">
-												<li><a href="#">Link</a></li>
-												<li><a href="#">Link</a></li>
-												<li><a href="#">Link</a></li>
-
+												<li><a href="#">Asignar Servicio - Local</a></li>
+												<li><a href="#">Consultar Local</a></li>
 												<!-- Dropdown level 2 -->
 												<li class="panel panel-default" id="dropdown">
 													<a data-toggle="collapse" href="#drop_2-1">
@@ -106,6 +103,7 @@
 								</li>
 
 								<li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>
+								<li><a href="#"><span class="fa fa-link"></span> Link</a></li>
 
 							</ul>
 						</div>

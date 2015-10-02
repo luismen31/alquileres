@@ -67,7 +67,8 @@ class EmpresasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Empresa = \App\Empresa::find($id);
+        return view('empresas.edit')->with('datos', $Empresa);
     }
 
     /**
@@ -79,7 +80,14 @@ class EmpresasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Empresa = \App\Empresa::find($id);
+        $Empresa->nombre_empresa = $request->input('nombre_empresa');
+        $Empresa->ruc = $request->input('ruc');
+        $Empresa->ubicacion = $request->input('ubicacion');
+        $Empresa->detalle = $request->input('detalle');
+        $Empresa->save();
+
+        return redirect()->route('empresas.index');
     }
 
     /**

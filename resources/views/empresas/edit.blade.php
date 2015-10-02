@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-	Agregar Nueva Empresa
+	Editar Empresas
 @stop
 
 @section('content')	
