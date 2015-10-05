@@ -69,6 +69,7 @@
 
 	{!! Html::script('assets/js/jquery-ui.min.js') !!}
 	{!! Html::script('assets/js/jquery.ui.touch-punch.min.js') !!}
+	{!! Html::script('assets/js/jquery.notify.js') !!}
 	<script>
 	    $(function () {
 
@@ -110,7 +111,10 @@
 					
 					// To increase the value by +1 if the same item is already in the service_local
 					if (itemId.html() != null) {
-						alert('ya fue ingresado este servicio');
+						var mensaje = move.find("h4").html()+' ya ha sido agregado.';
+						//Enviar notificacion que ya existe el servicio
+						notificacion(mensaje);
+
 					}else {
 						// Add the dragged item to the service_local
 						addService(service_local, move);
@@ -118,6 +122,19 @@
 				}
 			});
 
+			function notificacion(mensaje){
+				createNoty(""+ mensaje +"", "warning");
+			    //cerrar notificacion cliqueando el boton "x"
+			    $('.page-alert .close').click(function(e) {
+			        e.preventDefault();
+			        $(this).closest('.page-alert').slideUp();
+			    });
+			    //cerrar notificacion despues de 5 seg. 
+			    setTimeout(function() {
+			        $(".page-alert .close").closest('.page-alert').slideUp();
+			    },5000);
+			}
+			
 	        // This function runs onc ean item is added to the service
 	        function addService(service_local, move) {
 
