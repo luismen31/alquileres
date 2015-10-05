@@ -16,7 +16,7 @@ class ServiciosLocalesController extends Controller
      */
     public function index()
     {
-        return view('servicioslocales.create');
+        return view('servicioslocales/index');
     }
 
     /**
@@ -37,6 +37,10 @@ class ServiciosLocalesController extends Controller
      */
     public function store(Request $request)
     {
+        $v = \Validator::make(['servicios' => $request->input('servicios')], ['servicios' => 'required']);
+        if($v->fails()){
+            return back()->withInput()->withErrors($v);
+        }
         $ServicioLocal = new \App\ServicioLocal;
         $ServicioLocal->id_local = $request->input('id_local');
         $ServicioLocal->id_servicio = $request->input('id_servicio');
@@ -45,8 +49,7 @@ class ServiciosLocalesController extends Controller
         $ServicioLocal->realizado_por = $request->input('realizado_por');
         $ServicioLocal->observaciones = $request->input('observaciones');
         $ServicioLocal->save();
-
-        return redirect()->route('serviciolocal.index');
+        return redirect()->route('serviciolocal.index');     
     }
 
     /**

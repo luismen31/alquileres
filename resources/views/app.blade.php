@@ -16,6 +16,7 @@
     {!! Html::style('assets/css/bootstrap-datetimepicker.min.css') !!}
     {!! Html::style('assets/css/easy-autocomplete.min.css') !!}
  	{!! Html::style('assets/css/easy-autocomplete.themes.min.css') !!}
+ 	@yield('new_css')
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <!--script src="../../assets/js/ie-emulation-modes-warning.js"></script-->
@@ -84,7 +85,7 @@
 										<div class="panel-body">
 											<ul class="nav navbar-nav">
 												<li><a href="{{route('serviciolocal.index')}}">Asignar Servicio - Local</a></li>
-												<li><a href="">Consultar Local</a></li>
+												<li><a href="#">Consultar Local</a></li>
 												<!-- Dropdown level 2 -->
 												<li class="panel panel-default" id="dropdown">
 													<a data-toggle="collapse" href="#drop_2-1">

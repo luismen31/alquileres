@@ -40,10 +40,10 @@ html .clearf{height: 1%;}
 * clases globales
 */
 body {
-  ba ckground: #F1F3FA;
  padding-top: 50px;
 }
 .login{
+  background-color: #353535;
   background: url(../../imgs/background-gray.jpg) 100% 0px no-repeat fixed;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -493,9 +493,9 @@ body {
 }
 .notice-danger {
     border-color: #d73814;
+    background: #FFE9E4;
 }
 .notice-danger>strong {
     color: #d73814;
 }
 /******/
-
