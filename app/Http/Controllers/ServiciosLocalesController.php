@@ -16,7 +16,7 @@ class ServiciosLocalesController extends Controller
      */
     public function index()
     {
-        //
+        return view('servicioslocales/index');
     }
 
     /**
@@ -37,7 +37,12 @@ class ServiciosLocalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       // dd($request->all());        
+        $v = \Validator::make(['servicios' => $request->input('servicios')], ['servicios' => 'required']);
+        if($v->fails()){
+            return back()->withInput()->withErrors($v);
+        }
+        dd($request->all());
     }
 
     /**

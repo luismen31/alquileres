@@ -1,0 +1,220 @@
+/*  reset & .clear
+----------------------------*/
+.clear:before,
+.clear:after {
+    content: " ";
+    display: table;
+}
+
+.clear:after { clear: both }
+
+.clear { *zoom: 1 }s
+
+
+/*  SERVICES
+----------------------------*/
+
+#service ul {
+    margin-left: -10px; }
+
+#service ul li {
+    position: relative;
+    float: left;    
+    width: 90px;
+    margin: 0 0 10px 10px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    -webkit-transition: -webkit-transform .1s ease;
+    -moz-transition: -webkit-transform .1s ease;
+    -o-transition: -webkit-transform .1s ease;
+    -ms-transition: -webkit-transform .1s ease;
+    transition: transform .1s ease;
+}
+@media screen and(max-width: 991px){
+    #service ul li{
+        width: 80px;
+    }
+}
+@media screen and (max-width: 767px){
+    #service ul li{
+        width: 60px;
+    }
+}
+
+#service ul li:hover {
+    background-color: #D8EFF3;
+}
+
+#service.active ul li {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+    filter: alpha(opacity = 40);
+    opacity: .4;
+}
+
+#service.active ul li.active {
+    z-index: 2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity = 100);
+    opacity: 1;
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    -o-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: scale(.7);
+    -moz-transform: scale(.7);
+    -o-transform: scale(.7);
+    -ms-transform: scale(.7);
+    transform: scale(.7);
+}
+
+#service ul li a {
+    display: block;
+    color: #1C3123;
+    text-align:center;
+}
+#service ul li a:hover{
+    color: #2C4A36;
+    text-decoration: none;
+}
+
+#service ul li a h4 {
+    margin-top: 5px;
+}
+
+#service ul li a h4,
+#service ul li a p {
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+#service ul li a i { 
+    height: 40px;
+    display: block;
+    font-size: 30px;
+    text-align: center; 
+}
+
+/*  BASKET
+----------------------------*/
+
+.service_local .service_local_list {
+    wid th: 220px;
+    background-color: #fff;
+    border: 2px dashed transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 2px rgba(100, 100, 100, .2);
+    box-shadow: 0 1px 2px rgba(100, 100, 100, .2);
+} 
+
+.service_local.active .service_local_list,
+.service_local.hover .service_local_list { border-color: #ffa0a3 }
+
+.service_local.active .service_local_list { background-color: #D8EFF3 }
+
+.service_local.hover .service_local_list { background-color: #ffa0a3 }
+
+/* .head */
+
+.service_local .head {
+    overflow: hidden;
+    margin: 0 10px;
+    height: 26px;
+    line-height: 26px;
+    color: #666;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+.service_local .head .name { float: left }
+
+.service_local .head .count { float: right }
+
+/* .head */
+
+.service_local ul { padding-bottom: 10px }
+
+.service_local ul li {
+    position: relative;
+    clear: both;
+    overflow: hidden;
+    margin: 0 10px;
+    height: 26px;
+    line-height: 32px;
+    border-bottom: 1px dashed #eee;
+}
+
+.service_local ul li:hover { border-bottom-color: #ccc }
+
+
+.service_local ul li span.name {
+    display: block;
+    float: left;
+    width: 165px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -webkit-transition: width .2s ease;
+    -moz-transition: width .2s ease;
+    -o-transition: width .2s ease;
+    -ms-transition: width .2s ease;
+    transition: width .2s ease;
+}
+
+.service_local ul li:hover span.name { width: 146px }
+
+.service_local ul li input.count {
+    float: right;
+    margin: 3px 2px 0 0;
+    width: 25px;
+    line-height: 20px;
+    text-align: center;
+    border: 0;
+    border-radius: 3px;
+    background-color: #ddd;
+}
+
+.service_local ul li button.delete {
+    position: absolute;
+    right: 30px;
+    top: 3px;
+    width: 20px;
+    line-height: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 11px;
+    border: 0;
+    color: #EE5757;
+    background-color: #eee;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-transition: opacity .2s ease;
+    -moz-transition: opacity .2s ease;
+    -o-transition: opacity .2s ease;
+    -ms-transition: opacity .2s ease;
+    transition: opacity .2s ease;
+}
+
+.service_local ul li button.delete:hover {
+    color: #fff;
+    background-color: #ffa0a3;
+}
+
+.service_local ul li button.delete:active {
+    color: #fff;
+    background-color: #EE5757;
+}
+
+.well-services{
+  border: none;
+  min-height: 95px;
+}
