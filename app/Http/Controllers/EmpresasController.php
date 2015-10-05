@@ -45,6 +45,7 @@ class EmpresasController extends Controller
         $Empresa->detalle = $request->input('detalle');
         $Empresa->save();
 
+        \Session::flash('mensaje', 'Se ha registrado exitosamente la empresa: '.$request->input('nombre_empresa'));
         return redirect()->route('empresas.index');
     }
 
@@ -87,6 +88,7 @@ class EmpresasController extends Controller
         $Empresa->detalle = $request->input('detalle');
         $Empresa->save();
 
+        \Session::flash('mensaje', 'Se ha actualizado correctamente la empresa: '.$request->input('nombre_empresa'));
         return redirect()->route('empresas.index');
     }
 
