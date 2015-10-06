@@ -107,6 +107,9 @@ return [
     'attributes' => [
         'usuario' => 'Usuario',
         'password' => 'Contraseña',
+        'nombre_empresa' => 'Nombre de la Empresa',
+        'logo_empresa' => 'Logo de la Empresa',
+
     ],
 
 ];

@@ -36,8 +36,27 @@ class EmpresasController extends Controller
      * @return Response
      */
     public function store(Request $request)
-    {
-        
+    {   
+        $image = $request->file('logo_empresa');
+        $data = [ 
+            'nombre_empresa' => $request->input('nombre_empresa'),
+            'logo_empresa' => $image,
+        ];
+
+        $rules = [
+            'nombre_empresa' => 'required',
+            'logo_empresa' => ['required','image'],
+        ];
+
+        $v = \Validator::make($data, $rules);
+        if($v->fails()){
+            return redirect()->back()->withInput()->withErrors($v);
+        }
+
+        $imageName = $request->input('nombre_empresa').'.'.$image->getClientOriginalExtension();
+        \Storage::makeDirectory('empresa');
+        \Storage::disk('local')->put('empresa/'.$imageName, \File::get($image));
+       
         $Empresa = new \App\Empresa;
         $Empresa->nombre_empresa = $request->input('nombre_empresa');
         $Empresa->ruc = $request->input('ruc');

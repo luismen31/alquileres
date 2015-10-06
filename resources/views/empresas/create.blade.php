@@ -17,7 +17,7 @@
 		
 		@include('mensajes.errors')
 						
-		{!! Form::open(array('route' => 'empresas.store', 'method' => 'POST')) !!}
+		{!! Form::open(array('route' => 'empresas.store', 'method' => 'POST', 'files' => 'true')) !!}
 
 			@include('empresas.partials.forms')
 
