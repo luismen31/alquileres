@@ -16,7 +16,7 @@ class ServiciosLocalesController extends Controller
      */
     public function index()
     {
-        return view('servicioslocales/index');
+        return view('servicioslocales/create');
     }
 
     /**
