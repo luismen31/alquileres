@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('servicios', 'ServiciosController');
 	Route::resource('locales', 'LocalesController');
 	Route::resource('serviciolocal', 'ServiciosLocalesController');
+	Route::controller('datagrid', 'DataGridController');
 });
 
 // Authentication routes...

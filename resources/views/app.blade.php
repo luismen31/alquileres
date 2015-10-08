@@ -14,8 +14,8 @@
     {!! Html::style('assets/css/alquileres.css') !!}
     {!! Html::style('assets/css/font-awesome.min.css') !!}
     {!! Html::style('assets/css/bootstrap-datetimepicker.min.css') !!}
-    {!! Html::style('assets/css/easy-autocomplete.min.css') !!}
- 	{!! Html::style('assets/css/easy-autocomplete.themes.min.css') !!}
+    {!! Html::style('assets/css/bootstrap-table.css') !!}
+
  	@yield('new_css')
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -143,7 +143,7 @@
        			Place sticky footer content here.
     		</div>
     	</div>
-    </div>
+    </div>    
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -152,7 +152,9 @@
     {!! Html::script('assets/js/moment-es.js') !!}
     {!! Html::script('assets/js/bootstrap.min.js') !!}
     {!! Html::script('assets/js/bootstrap-datetimepicker.min.js') !!}
-    {!! Html::script('assets/js/jquery.easy-autocomplete.min.js') !!}
+    {!! Html::script('assets/js/bootstrap-table.min.js') !!}
+    {!! Html::script('assets/js/locale/bootstrap-table-es-MX.min.js') !!}
+    {!! Html::script('assets/js/dataGrid.js') !!}
     <script type="text/javascript">
     	var baseurl = '{!! url() !!}';
     </script>
