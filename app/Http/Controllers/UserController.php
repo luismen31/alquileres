@@ -42,10 +42,10 @@ class UserController extends Controller
         $Usuario->password = \Hash::make($request->input('password'));
         $Usuario->save();
 
-        $id_usuario = \App\Usuario::where('id', '>', '0')->orderBy('id', 'desc')->first()->id;
+        $id_usuario = $Usuario->id;
 
         $UserEmpresa = new \App\UserEmpresa;
-        $UserEmpresa->id_usuario = $id_usuario;
+        $UserEmpresa->id_user = $id_usuario;
         $UserEmpresa->id_empresa = $request->input('id_empresa');
         $UserEmpresa->id_rol = $request->input('id_rol');
         $UserEmpresa->save();

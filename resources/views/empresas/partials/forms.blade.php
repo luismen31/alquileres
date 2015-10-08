@@ -3,7 +3,6 @@
 @else
 	{{--*/ $img = 'imgs/camera-icon.png'; /*--}}
 @endif
-
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2">
 		<div class="panel panel-info">
@@ -52,6 +51,22 @@
 					<div class="form-group col-sm-12">
 						{!! Form::label('detalle', 'Detalle:', array('class' => 'control-label')) !!}
 						{!! Form::textarea('detalle', null, array('placeholder' => 'Detalle', 'class' => 'form-control input-sm', 'size' => '3x2')) !!}
+					</div>
+					<div class="form-group col-sm-12">
+						{!! Form::label('head_print', 'Head Print:', array('class' => 'control-label')) !!}
+						{!! Form::textarea('head_print', null, array('placeholder' => 'Head Print', 'class' => 'form-control input-sm', 'size' => '3x2')) !!}
+					</div>
+					<div class="form-group col-sm-12">
+						{!! Form::label('footer_print', 'Footer Print:', array('class' => 'control-label')) !!}
+						{!! Form::textarea('footer_print', null, array('placeholder' => 'Footer Print', 'class' => 'form-control input-sm', 'size' => '3x2')) !!}
+					</div>
+					<div class="form-group col-sm-6">
+						{!! Form::label('usuario', 'Usuario:', array('class' => 'control-label')) !!}
+						{!! Form::text('usuario', null, array('class'=>'form-control input-sm', 'placeholder' => 'Usuario')) !!}
+					</div>
+					<div class="form-group col-sm-6">
+						{!! Form::label('password', 'Contraseña:', array('class' => 'control-label')) !!}
+						{!! Form::password('password', array('class'=>'form-control input-sm', 'placeholder' => 'Contraseña')) !!}
 					</div>
 		      	</div>
 		    </div>
