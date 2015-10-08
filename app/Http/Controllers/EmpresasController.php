@@ -38,31 +38,29 @@ class EmpresasController extends Controller
     public function store(Request $request)
     {   
         $image = $request->file('logo_empresa');
-        $data = [ 
-            'nombre_empresa' => $request->input('nombre_empresa'),
-            'logo_empresa' => $image,
-        ];
-
-        $rules = [
-            'nombre_empresa' => 'required',
-            'logo_empresa' => ['required','image'],
-        ];
-
-        $v = \Validator::make($data, $rules);
-        if($v->fails()){
+        
+        $emp = new \App\Empresa;
+        $v = $emp->validar($request->all());
+        if($v){
             return redirect()->back()->withInput()->withErrors($v);
         }
 
-        $imageName = $request->input('nombre_empresa').'.'.$image->getClientOriginalExtension();
-        \Storage::makeDirectory('empresa');
-        \Storage::disk('local')->put('empresa/'.$imageName, \File::get($image));
-       
+        //Almacenar Empresas        
         $Empresa = new \App\Empresa;
         $Empresa->nombre_empresa = $request->input('nombre_empresa');
         $Empresa->ruc = $request->input('ruc');
         $Empresa->ubicacion = $request->input('ubicacion');
-        $Empresa->detalle = $request->input('detalle');
+        $Empresa->detalle = $request->input('detalle');        
         $Empresa->save();
+        //Obtiene el ID de la empresa recien ingresada
+        $id = $Empresa->id;
+        //Almacenar nombre de imagen en BD        
+        $imageName = 'empresa_'.$id.'.'.$image->getClientOriginalExtension();
+        $Empresa = \App\Empresa::find($id);
+        $Empresa->logo_empresa = $imageName;
+        $Empresa->save();
+        
+        \Storage::disk('local')->put($imageName, \File::get($image));
 
         \Session::flash('mensaje', 'Se ha registrado exitosamente la empresa: '.$request->input('nombre_empresa'));
         return redirect()->route('empresas.index');
@@ -100,12 +98,25 @@ class EmpresasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $image = $request->file('logo_empresa');
+
+        $emp = new \App\Empresa;
+        $v = $emp->validar($request->all(), 'update');
+        if($v){
+            return redirect()->back()->withInput()->withErrors($v);
+        }
+
+        $imageName = 'empresa_'.$id.'.'.$image->getClientOriginalExtension();
+
         $Empresa = \App\Empresa::find($id);
         $Empresa->nombre_empresa = $request->input('nombre_empresa');
         $Empresa->ruc = $request->input('ruc');
         $Empresa->ubicacion = $request->input('ubicacion');
         $Empresa->detalle = $request->input('detalle');
+        $Empresa->logo_empresa = $imageName;
         $Empresa->save();
+
+        \Storage::disk('local')->put($imageName, \File::get($image));
 
         \Session::flash('mensaje', 'Se ha actualizado correctamente la empresa: '.$request->input('nombre_empresa'));
         return redirect()->route('empresas.index');

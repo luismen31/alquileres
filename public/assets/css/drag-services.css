@@ -127,8 +127,8 @@
     margin: 0 10px;
     height: 26px;
     line-height: 26px;
-    color: #666;
     font-size: 14px;
+    font-weight: bold;
     border-bottom: 1px solid #ddd;
 }
 
@@ -157,7 +157,6 @@
     display: block;
     float: left;
     width: 165px;
-    font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
     -o-text-overflow: ellipsis;

@@ -17,7 +17,7 @@
 		
 		@include('mensajes.errors')
 						
-		{!! Form::model($datos, array('route' => array('empresas.update', $datos->id), 'method' => 'PUT')) !!}
+		{!! Form::model($datos, array('route' => array('empresas.update', $datos->id), 'method' => 'PUT', 'files' => 'true')) !!}
 
 			@include('empresas.partials.forms')
 
