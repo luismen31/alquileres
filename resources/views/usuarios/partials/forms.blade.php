@@ -1,3 +1,12 @@
+{{--*/$id_empresa = \App\UserEmpresa::where('id_user', \Auth::user()->id)->first()->id_empresa;/*--}}
+@if($id_empresa == 1)
+	{{--*/
+		$comp = '>';
+		$id_empresa = 0;
+	/*--}}
+@else
+	{{--*/$comp = '=';/*--}}
+@endif
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2">		
 		<div class="panel panel-info">
@@ -16,7 +25,7 @@
 					</div>
 					<div class="form-group col-sm-6">
 						{!! Form::label('id_empresa', 'Empresa:', array('class' => 'control-label')) !!}
-						{!! Form::select('id_empresa', App\Empresa::lists('nombre_empresa', 'id')->toArray(), null, array('class' => 'form-control input-sm'))  !!}
+						{!! Form::select('id_empresa', App\Empresa::where('id', $comp, $id_empresa)->lists('nombre_empresa', 'id')->toArray(), $id_empresa, array('class' => 'form-control input-sm'))  !!}
 					</div>
 					<div class="form-group col-sm-6">
 						{!! Form::label('id_rol', 'Rol:', array('class' => 'control-label')) !!}

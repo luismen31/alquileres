@@ -41,15 +41,18 @@ class ServiciosLocalesController extends Controller
         if($v->fails()){
             return back()->withInput()->withErrors($v);
         }
-        $ServicioLocal = new \App\ServicioLocal;
-        $ServicioLocal->id_local = $request->input('id_local');
-        $ServicioLocal->id_servicio = $request->input('id_servicio');
-        $ServicioLocal->costo = $request->input('costo');
-        $ServicioLocal->fecha = $request->input('fecha');
-        $ServicioLocal->realizado_por = $request->input('realizado_por');
-        $ServicioLocal->observaciones = $request->input('observaciones');
-        $ServicioLocal->save();
-        return redirect()->route('serviciolocal.index');     
+        foreach($request->input('servicios') as $id => $servicio){
+            $ServicioLocal = new \App\ServicioLocal;
+            $ServicioLocal->id_local = $request->input('id_local');
+            $ServicioLocal->id_servicio = $id;
+            $ServicioLocal->costo = $servicio[0];
+            $ServicioLocal->fecha = $request->input('fecha');
+            $ServicioLocal->realizado_por = $request->input('realizado_por');
+            $ServicioLocal->observaciones = $request->input('observaciones');
+            $ServicioLocal->save();
+        }
+        return redirect()->route('serviciolocal.index');
+        
     }
 
     /**

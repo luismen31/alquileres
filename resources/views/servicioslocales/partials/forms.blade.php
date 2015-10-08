@@ -9,7 +9,7 @@
     </div>
     <div class="panel-body">
     	{{--*/
-    			$id_empresa = \App\UserEmpresa::where('id_users', \Auth::user()->id)->first()->id_empresa;
+    			$id_empresa = \App\UserEmpresa::where('id_user', \Auth::user()->id)->first()->id_empresa;
     	/*--}}
     	<div class="row">
     		<div class="form-group col-sm-4">
@@ -21,14 +21,6 @@
 				{!! Form::select('id_local',  App\Local::where('id_empresa', $id_empresa)->lists('no_identificacion', 'id')->toArray(), null, array('class'=>'form-control input-sm')) !!}
 			</div>
 			<div class="form-group col-sm-4">
-				{!! Form::label('id_servicio', 'Servicio:', array('class' => 'control-label')) !!}
-				{!! Form::select('id_servicio',  App\Servicio::where('id_empresa', $id_empresa)->lists('servicio', 'id')->toArray(), null, array('class'=>'form-control input-sm')) !!}
-			</div>
-			<div class="form-group col-sm-4">
-				{!! Form::label('costo', 'Costo:', array('class' => 'control-label')) !!}
-				{!! Form::text('costo', null, array('class'=>'form-control input-sm', 'placeholder' => 'Costo')) !!}
-			</div>
-			<div class="form-group col-sm-4">
 				{!! Form::label('realizado_por', 'Realizado por:', array('class' => 'control-label')) !!}
 				{!! Form::textarea('realizado_por', null, array('placeholder' => 'Realizado por', 'class' => 'form-control input-sm', 'size' => '3x1')) !!}
 			</div>
@@ -37,28 +29,20 @@
 				{!! Form::textarea('observaciones', null, array('placeholder' => 'Observaciones', 'class' => 'form-control input-sm', 'size' => '3x1')) !!}
 			</div>
       	</div>
+    	{{--<i class="fa fa-flash"></i>--}}
+		{{--<i class="typcn typcn-weather-snow"></i>--}}
+        {{--<i class="fa fa-tint"></i>--}}
       	<div class="row">
 			<div class="col-xs-12 col-sm-4 well well-sm well-services">
 				<section id="service">
 			        <ul class="clear list-unstyled">
-			            <li data-id="1" data-precio="40">
-			                <a href="#">
-			                    <i class="fa fa-tint"></i>
-			                    <h4>Agua</h4>		                    
-			                </a>
-			            </li>
-			            <li data-id="2" data-precio="60">
-			                <a href="#">
-			                    <i class="fa fa-flash"></i>
-			                    <h4>Luz</h4>		                    
-			                </a>
-			            </li>
-			            <li data-id="3" data-precio="50">
-			                <a href="#">
-			                    <i class="typcn typcn-weather-snow"></i>
-			                    <h4>Aire Acondicionado</h4>		                    
-			                </a>
-			            </li>
+			        	@foreach(\App\Servicio::where('id_empresa', \App\UserEmpresa::where('id_user', \Auth::user()->id )->first()->id_empresa)->get() as $Servicios)
+				        	<li data-id="{{ $Servicios->id }}" data-precio="{{ $Servicios->costo }}">
+				                <a href="#">
+				                    <h4>{{ $Servicios->servicio }}</h4>		                    
+				                </a>
+				            </li>
+			        	@endforeach
 			        </ul>
 			  	</section>
 			</div>

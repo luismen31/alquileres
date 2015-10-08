@@ -62,11 +62,12 @@
 									<div id="drop_1" class="panel-collapse collapse {{ ($url == 'empresas' or $url == 'usuarios' or $url == 'servicios' or $url == 'locales') ? 'in' : '' }}">
 										<div class="panel-body">
 											<ul class="nav navbar-nav">
-
-												{{--@if(\App\UserEmpresa::('id_user', \Auth::user()->id)->first()->id_empresa == '1')--}}
-													<li><a href="{{route('empresas.index')}}"><span class="fa fa-building"></span> Empresas</a></li>
-												{{--@endif--}}
+											@if( \App\UserEmpresa::where('id_user', \Auth::user()->id)->first()->id_empresa == 1 )
+												<li><a href="{{route('empresas.index')}}"><span class="fa fa-building"></span> Empresas</a></li>
+											@endif
+											@if( \App\UserEmpresa::where('id_user', \Auth::user()->id)->first()->id_rol == 1)
 												<li><a href="{{route('usuarios.index')}}"><span class="fa fa-user"></span> Usuarios</a></li>
+											@endif
 												<li><a href="{{route('servicios.index')}}"><span class="fa fa-briefcase"></span> Servicios</a></li>
 												<li><a href="{{route('locales.index')}}"><span class="fa fa-building-o"></span> Locales</a></li>
 											</ul>

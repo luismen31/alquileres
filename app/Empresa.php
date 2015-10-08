@@ -14,12 +14,13 @@ class Empresa extends Model
     	if($tipo == 'store'){
 	    	$rules = [
 	            'nombre_empresa' => 'required',
+                'usuario' => ['required', 'unique:users,usuario'],
+                'password' => 'required',
 	            'logo_empresa' => ['required','image'],
 	        ];    		
     	}else{
     		$rules = [
     			'nombre_empresa' => 'required',
-	            'logo_empresa' => ['required','image'],
     		];
     	}
 

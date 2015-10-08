@@ -50,7 +50,9 @@ class EmpresasController extends Controller
         $Empresa->nombre_empresa = $request->input('nombre_empresa');
         $Empresa->ruc = $request->input('ruc');
         $Empresa->ubicacion = $request->input('ubicacion');
-        $Empresa->detalle = $request->input('detalle');        
+        $Empresa->detalle = $request->input('detalle');  
+        $Empresa->footer_print = $request->input('footer_print');
+        $Empresa->head_print = $request->input('head_print');
         $Empresa->save();
         //Obtiene el ID de la empresa recien ingresada
         $id = $Empresa->id;
@@ -59,6 +61,19 @@ class EmpresasController extends Controller
         $Empresa = \App\Empresa::find($id);
         $Empresa->logo_empresa = $imageName;
         $Empresa->save();
+
+        $Usuario = new \App\Usuario;
+        $Usuario->usuario = $request->input('usuario');
+        $Usuario->password = \Hash::make($request->input('password'));
+        $Usuario->save();
+
+        $id_usuario = $Usuario->id;
+
+        $UserEmpresa = new \App\UserEmpresa;
+        $UserEmpresa->id_user = $id_usuario;
+        $UserEmpresa->id_empresa = $id;
+        $UserEmpresa->id_rol = 1;
+        $UserEmpresa->save();
         
         \Storage::disk('local')->put($imageName, \File::get($image));
 
@@ -86,6 +101,8 @@ class EmpresasController extends Controller
     public function edit($id)
     {
         $Empresa = \App\Empresa::find($id);
+        $Usuario = \App\Usuario::find(\App\UserEmpresa::where('id_empresa', $id)->where('id_rol', 1)->first()->id_user);
+        $Empresa->usuario = $Usuario->usuario;
         return view('empresas.edit')->with('datos', $Empresa);
     }
 
@@ -113,8 +130,19 @@ class EmpresasController extends Controller
         $Empresa->ruc = $request->input('ruc');
         $Empresa->ubicacion = $request->input('ubicacion');
         $Empresa->detalle = $request->input('detalle');
+        $Empresa->footer_print = $request->input('footer_print');
+        $Empresa->head_print = $request->input('head_print');
         $Empresa->logo_empresa = $imageName;
         $Empresa->save();
+
+        $id_empresa = $Empresa->id;
+
+        $Usuario = \App\Usuario::find(\App\UserEmpresa::where('id_empresa', $id_empresa)->where('id_rol', 1)->first()->id_user);
+        $Usuario->usuario = $request->input('usuario');
+        if(!empty($request->input('password'))){
+            $Usuario->password = \Hash::make($request->input('password'));
+        }
+        $Usuario->save();
 
         \Storage::disk('local')->put($imageName, \File::get($image));
 
