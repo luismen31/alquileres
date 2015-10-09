@@ -17,7 +17,6 @@ class DataGridController extends Controller
 
     	$empresas = \App\Empresa::all();
     	$n = 1;
-    	$comilla = "'";
 
     	foreach ($empresas as $empresa) {
 

@@ -9,7 +9,7 @@ class Empresa extends Model
     protected $table = 'empresas';
     public $timestamps = false;
 
-    public function validar($request, $tipo = 'store'){
+    public function validar($request, $tipo = 'store', $id = null){
     	
     	if($tipo == 'store'){
 	    	$rules = [
@@ -19,8 +19,11 @@ class Empresa extends Model
 	            'logo_empresa' => ['required','image'],
 	        ];    		
     	}else{
+            $id_user = \App\UserEmpresa::where('id_empresa', $id)->first()->id_user;
     		$rules = [
     			'nombre_empresa' => 'required',
+                'logo_empresa'  => 'image',
+                'usuario' => ['required', 'unique:users,usuario,'.$id_user.',id']
     		];
     	}
 

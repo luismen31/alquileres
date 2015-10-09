@@ -13,10 +13,11 @@
 		@include('mensajes.notify', ['mensaje' => Session::get('mensaje'), 'tipo' => 'success'])
 	@endif
 
+	@include('mensajes.errors')
+
+	@include('empresas.partials.data-grid')
+
 	<div class="tabbable-panel">
-		
-		@include('mensajes.errors')
-						
 		{!! Form::open(array('route' => 'empresas.store', 'method' => 'POST', 'files' => 'true')) !!}
 
 			@include('empresas.partials.forms')

@@ -1,7 +1,8 @@
 $(function(){
 	$('#table-empresa').bootstrapTable({
-		url: 'datagrid/empresa',
-		height: 300,
-		sidePagination: 'server'		
+		url: baseurl+'/datagrid/empresa',
+		height: 260,
+		sidePagination: 'server',
+		pagination: true
 	});
 });

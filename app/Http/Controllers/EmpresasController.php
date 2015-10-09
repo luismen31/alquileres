@@ -115,15 +115,12 @@ class EmpresasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $image = $request->file('logo_empresa');
 
         $emp = new \App\Empresa;
-        $v = $emp->validar($request->all(), 'update');
+        $v = $emp->validar($request->all(), 'update', $id);
         if($v){
             return redirect()->back()->withInput()->withErrors($v);
         }
-
-        $imageName = 'empresa_'.$id.'.'.$image->getClientOriginalExtension();
 
         $Empresa = \App\Empresa::find($id);
         $Empresa->nombre_empresa = $request->input('nombre_empresa');
@@ -132,7 +129,15 @@ class EmpresasController extends Controller
         $Empresa->detalle = $request->input('detalle');
         $Empresa->footer_print = $request->input('footer_print');
         $Empresa->head_print = $request->input('head_print');
-        $Empresa->logo_empresa = $imageName;
+        //Si ingresa una nueva imagen se reemplazara con la anterior almacenada
+        if($request->hasFile('logo_empresa')){
+            
+            $image = $request->file('logo_empresa');            
+            $imageName = 'empresa_'.$id.'.'.$image->getClientOriginalExtension();
+            $Empresa->logo_empresa = $imageName;
+            
+            \Storage::disk('local')->put($imageName, \File::get($image));
+        }
         $Empresa->save();
 
         $id_empresa = $Empresa->id;
@@ -143,8 +148,6 @@ class EmpresasController extends Controller
             $Usuario->password = \Hash::make($request->input('password'));
         }
         $Usuario->save();
-
-        \Storage::disk('local')->put($imageName, \File::get($image));
 
         \Session::flash('mensaje', 'Se ha actualizado correctamente la empresa: '.$request->input('nombre_empresa'));
         return redirect()->route('empresas.index');
